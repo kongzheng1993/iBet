@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>4.2.3.RELEASE</spring.version>
-        <mysql.version>5.1.38</mysql.version>
+        <mysql.version>5.1.40</mysql.version>
         <junit.version>3.8.1</junit.version>
         <jstl.version>1.2</jstl.version>
         <taglibs.version>1.1.2</taglibs.version>
@@ -49,9 +49,6 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
-        <!-- End Spring dependencies -->
-
 
         <!-- junit dependencies -->
         <dependency>
@@ -119,7 +116,7 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.0.0</version>
                 <configuration>
-                    <webAppSourceDirectory>F:\workspace\idea\iBet\web</webAppSourceDirectory>
+                    <webAppSourceDirectory>/Users/kongzheng1993/workspace/java/iBet/web</webAppSourceDirectory>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
                             <port>8765</port>

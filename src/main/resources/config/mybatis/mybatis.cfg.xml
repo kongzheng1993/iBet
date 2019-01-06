@@ -14,7 +14,7 @@
     <!-- 为JAVA PO类起类别名 -->
     <typeAliases>
         <!-- 别名方式2，自动扫描，将JAVA类的类名作为类的类别名 -->
-        <package name="com.tourmade.tmshop.entity" />
+        <package name="com.evil.ibet.wechat.entity,com.evil.ibet.core.entity" />
     </typeAliases>
 
 
