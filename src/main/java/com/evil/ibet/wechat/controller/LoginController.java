@@ -1,8 +1,7 @@
 package com.evil.ibet.wechat.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.evil.ibet.util.PropertiesUtil;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +27,8 @@ public class LoginController {
 
 
     @RequestMapping("login")
-    public @ResponseBody JSONObject login(String code) {
-        JSONObject json;
+    public @ResponseBody Map login(String code) {
+        Map returnMap = new HashMap();
         if (!StringUtils.isEmpty(code)) {
             String loginUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=" +
                     PropertiesUtil.getPropertie("AppId") + "&secret=" +
@@ -40,8 +39,8 @@ public class LoginController {
 
             if (responseEntity != null && responseEntity.getStatusCode() == HttpStatus.OK) {
                 String sessionData = responseEntity.getBody();
-                json = new JSONObject(sessionData);
-                return json;
+                returnMap = JSON.parseObject(sessionData);
+                return returnMap;
             } else {
                 return null;
             }
