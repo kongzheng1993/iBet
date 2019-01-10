@@ -14,14 +14,15 @@
     <!-- 为JAVA PO类起类别名 -->
     <typeAliases>
         <!-- 别名方式2，自动扫描，将JAVA类的类名作为类的类别名 -->
-        <package name="com.evil.ibet.wechat.entity,com.evil.ibet.core.entity" />
+        <package name="com.evil.ibet.entity" />
     </typeAliases>
 
 
 
-    <!--<mappers>-->
+    <mappers>
     <!--由于使用了spring与mybati整合包进行，mapper扫描，这里不需要配置-->
-    <!--</mappers>-->
+        <package name="com.evil.ibet.mapper"/>
+    </mappers>
 
 
 

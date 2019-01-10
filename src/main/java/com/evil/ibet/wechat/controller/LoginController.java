@@ -1,7 +1,10 @@
 package com.evil.ibet.wechat.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.evil.ibet.entity.User;
 import com.evil.ibet.util.PropertiesUtil;
+import com.evil.ibet.wechat.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,8 @@ import java.util.Map;
 @RequestMapping("wechat")
 public class LoginController {
 
-
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("login")
     public @ResponseBody Map login(String code) {
@@ -40,6 +44,11 @@ public class LoginController {
             if (responseEntity != null && responseEntity.getStatusCode() == HttpStatus.OK) {
                 String sessionData = responseEntity.getBody();
                 returnMap = JSON.parseObject(sessionData);
+                String wxOpenId = returnMap.get("openid").toString();
+                if (!StringUtils.isEmpty(wxOpenId)) {
+                    User user = new User(wxOpenId, "","");
+                    userService.saveUser(user);
+                }
                 return returnMap;
             } else {
                 return null;
