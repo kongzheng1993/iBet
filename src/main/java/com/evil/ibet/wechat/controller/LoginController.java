@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,7 +32,7 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping("login")
-    public @ResponseBody Map login(String code) {
+    public @ResponseBody Map login(String code/*, List<Map<String, String>> userInfo*/) {
         Map returnMap = new HashMap();
         if (!StringUtils.isEmpty(code)) {
             String loginUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=" +
@@ -42,8 +43,8 @@ public class LoginController {
             ResponseEntity<String> responseEntity = restTemplate.exchange(loginUrl, HttpMethod.GET, null, String.class);
 
             if (responseEntity != null && responseEntity.getStatusCode() == HttpStatus.OK) {
-                String sessionData = responseEntity.getBody();
-                returnMap = JSON.parseObject(sessionData);
+                String responseBody = responseEntity.getBody();
+                returnMap = JSON.parseObject(responseBody);
                 String wxOpenId = returnMap.get("openid").toString();
                 if (!StringUtils.isEmpty(wxOpenId)) {
                     User user = new User(wxOpenId, "","");
