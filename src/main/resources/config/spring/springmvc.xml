@@ -17,7 +17,7 @@
 
     <!-- <context:annotation-config /> -->
     <!-- 扫描业务组件,让spring不扫描带有@Service注解的类(留在root-context.xml中扫描@Service注解的类),防止事务失效 -->
-    <context:component-scan base-package="com.evil.ibet.core.controller,com.evil.ibet.wechat.controller"/>
+    <context:component-scan base-package="com.evil.ibet.core.controller,com.evil.ibet.wechat.controller,com.evil.ibet.common.controller"/>
 
     <!-- request static resources -->
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
@@ -32,8 +32,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- json转换器 -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"></bean>
+
 
 
 </beans>

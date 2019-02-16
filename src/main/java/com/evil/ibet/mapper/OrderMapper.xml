@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.evil.ibet.mapper.OrderMapper">
+
+    <insert id="insertOrder" parameterType="com.evil.ibet.entity.Order">
+        insert into t_order(userid, betsiteid, betid, redballs, blueballs, times, ordertime) 
+        values (#{userId}, #{betSiteId}, #{betId}, #{redBalls}, #{blueBalls}, #{times}, now())
+    </insert>
+    
+    <select id="selectOrdersByUserId" parameterType="string" resultType="com.evil.ibet.entity.Order">
+        select id, userid, betsiteid, betid, redballs, blueballs, times, ordertime from t_order where userid = #{userId}
+        and ordertime >= date_format(date_sub(now(),interval 1 day ), '%Y-%m-%d %H:%i:%s')
+    </select>
+
+</mapper>

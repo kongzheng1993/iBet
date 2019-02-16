@@ -102,6 +102,13 @@
             <version>1.2.54</version>
         </dependency>
 
+        <!-- bouncycastle -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.59</version>
+        </dependency>
+
         <!-- mybatis -->
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
         <dependency>
@@ -127,7 +134,7 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.0.0</version>
                 <configuration>
-                    <webAppSourceDirectory>F:\workspace\idea\iBet\web</webAppSourceDirectory>
+                    <webAppSourceDirectory>/Users/kongzheng1993/workspace/java/iBet/web</webAppSourceDirectory>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
                             <port>8765</port>

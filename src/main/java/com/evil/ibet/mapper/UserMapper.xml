@@ -2,6 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.evil.ibet.mapper.UserMapper">
     <insert id="insertUser" parameterType="com.evil.ibet.entity.User">
-      insert into t_user(wxopenid, username, wxnickname) value (#{user.wxOpenId}, #{user.userName}, #{user.wxNickName});
+      insert into t_user(wxopenid, wxnickname, username, IDCardNo, phoneNo, registertime) value (#{user.wxOpenId}, #{user.wxNickName}, #{user.userName}, #{user.userId}, #{user.phoneNo}, now());
     </insert>
+
+    <select id="selectUserByWxOpenId" parameterType="string" resultType="com.evil.ibet.entity.User">
+        select id, wxopenid, username, wxnickname, IDCardNo, phoneNo, registertime from t_user where wxopenid = #{wxOpenId}
+    </select>
+
+    <select id="selectUserById" parameterType="string" resultType="com.evil.ibet.entity.User">
+        select id, wxOpenId, wxNickName, userName, IDCardNo, phoneNo from t_user where id = #{userId}
+    </select>
+
+    <update id="updateUserById" parameterType="com.evil.ibet.entity.User">
+        update t_user set username = #{userName}, IDCardNo = #{IDCardNo}, phoneNo = #{phoneNo} where id = #{id};
+    </update>
+
+    <select id="selectUserBetSitesByUserId" parameterType="string" resultType="com.evil.ibet.entity.BetSite">
+        select id, name, betTypes from t_betsite a where a.id in (select betsiteid from t_user_betsite t where t.userid = #{userId});
+    </select>
+
 </mapper>
