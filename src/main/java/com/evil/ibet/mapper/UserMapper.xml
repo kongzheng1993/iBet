@@ -18,7 +18,8 @@
     </update>
 
     <select id="selectUserBetSitesByUserId" parameterType="string" resultType="com.evil.ibet.entity.BetSite">
-        select id, name, betTypes from t_betsite a where a.id in (select betsiteid from t_user_betsite t where t.userid = #{userId});
+        select a.id, a.name, a.betTypes, b.balance from t_betsite a inner join t_user_betsite b on a.id = b.betsiteid
+        where a.id in (select betsiteid from t_user_betsite t where t.userid = #{id});
     </select>
 
 </mapper>

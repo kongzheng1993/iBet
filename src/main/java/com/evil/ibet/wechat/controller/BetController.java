@@ -28,8 +28,13 @@ public class BetController {
         Map resultMap = new HashMap();
         if (!StringUtils.isEmpty(userId)) {
             betSitesList = userService.getUserBetSitesByUserId(userId);
-            rtnCode = "0";
-            rtnMessage = "获取用户投注站信息成功";
+            if (betSitesList != null) {
+                rtnCode = "0";
+                rtnMessage = "获取用户投注站信息成功";
+            } else {
+                rtnCode = "1";
+                rtnMessage = "您还没有在投注站充值！";
+            }
         } else {
             rtnCode = "1";
             rtnMessage = "获取用户投注站信息失败：userId="+userId;

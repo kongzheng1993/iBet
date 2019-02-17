@@ -1,6 +1,7 @@
 package com.evil.ibet.entity;
 
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class BetSite {
@@ -12,6 +13,7 @@ public class BetSite {
     private String password;    //密码
     private Timestamp registerTime; //注册时间
     private String betTypes;    //玩法
+    private BigDecimal balance; //用户在投注站余额
 
     public BetSite(int id, String name, String betTypes) {
         this.id = id;
@@ -22,7 +24,7 @@ public class BetSite {
     public BetSite() {
     }
 
-    public BetSite(int id, String name, String master, String username, String password, Timestamp registerTime, String betTypes) {
+    public BetSite(int id, String name, String master, String username, String password, Timestamp registerTime, String betTypes, BigDecimal balance) {
         this.id = id;
         this.name = name;
         this.master = master;
@@ -30,6 +32,7 @@ public class BetSite {
         this.password = password;
         this.registerTime = registerTime;
         this.betTypes = betTypes;
+        this.balance = balance;
     }
 
     public int getId() {
@@ -86,5 +89,13 @@ public class BetSite {
 
     public void setBetTypes(String betTypes) {
         this.betTypes = betTypes;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }
