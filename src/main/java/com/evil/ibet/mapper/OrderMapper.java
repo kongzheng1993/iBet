@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface OrderMapper {
 
-    void insertOrder(Order order);
+    int insertOrder(Order order);
 
     List<Order> selectOrdersByUserId(String userId);
 

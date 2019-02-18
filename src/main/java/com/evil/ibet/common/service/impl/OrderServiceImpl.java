@@ -14,8 +14,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-    public void saveOrder(Order order) {
-        orderMapper.insertOrder(order);
+    public int saveOrder(Order order) {
+        return orderMapper.insertOrder(order);
     }
 
     public List<Order> getOrderByUserId(String userId) {

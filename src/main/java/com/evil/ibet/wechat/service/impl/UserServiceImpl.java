@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,6 +34,10 @@ public class UserServiceImpl implements UserService {
 
     public List<BetSite> getUserBetSitesByUserId(String userId) {
         return userMapper.selectUserBetSitesByUserId(userId);
+    }
+
+    public int updateUserBalanceByUserIdBetSiteId(Map map) {
+        return userMapper.updateUserBalanceByUserIdBetSiteId(map);
     }
 
 }

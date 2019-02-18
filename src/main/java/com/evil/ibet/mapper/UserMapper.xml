@@ -14,12 +14,16 @@
     </select>
 
     <update id="updateUserById" parameterType="com.evil.ibet.entity.User">
-        update t_user set username = #{userName}, IDCardNo = #{IDCardNo}, phoneNo = #{phoneNo} where id = #{id};
+        update t_user set username = #{userName}, IDCardNo = #{IDCardNo}, phoneNo = #{phoneNo} where id = #{id}
     </update>
 
     <select id="selectUserBetSitesByUserId" parameterType="string" resultType="com.evil.ibet.entity.BetSite">
         select a.id, a.name, a.betTypes, b.balance from t_betsite a inner join t_user_betsite b on a.id = b.betsiteid
-        where a.id in (select betsiteid from t_user_betsite t where t.userid = #{id});
+        where a.id in (select betsiteid from t_user_betsite t where t.userid = #{id})
     </select>
+
+    <update id="updateUserBalanceByUserIdBetSiteId" parameterType="hashmap">
+        update t_user_betsite set balance = balance-#{fee} where userid = #{userId} and betsiteid = #{betSiteId}
+    </update>
 
 </mapper>

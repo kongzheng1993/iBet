@@ -4,6 +4,7 @@ import com.evil.ibet.entity.BetSite;
 import com.evil.ibet.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -16,4 +17,6 @@ public interface UserService {
     int updateUserById(User user);
 
     List<BetSite> getUserBetSitesByUserId(String userId);
+
+    int updateUserBalanceByUserIdBetSiteId(Map map);
 }
