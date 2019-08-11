@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class _500_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static java.util.Vector _jspx_dependants;
@@ -51,10 +51,10 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("    <title>error:404</title>\r\n");
+      out.write("    <title>error:500</title>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("    <h1>error:404</h1>\r\n");
+      out.write("<h1>error:500</h1>\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
